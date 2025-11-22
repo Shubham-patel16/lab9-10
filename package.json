@@ -1,0 +1,23 @@
+{
+  "name": "lab9and10",
+  "version": "1.0.0",
+  "description": "this is lab 9 and 10",
+  "main": "index.js",
+  "scripts": {
+    "sass-builder": "sass --no-source-map scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubham-patel16/lab9-10.git"
+  },
+  "author": "shubham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubham-patel16/lab9-10/issues"
+  },
+  "homepage": "https://github.com/Shubham-patel16/lab9-10#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.94.2"
+  }
+}
