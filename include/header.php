@@ -1,42 +1,4 @@
 <?php
-// Stronger session cookie settings and inactivity timeout
-$secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
-$cookieParams = [
-    'lifetime' => 0,
-    'path' => '/',
-    'domain' => $_SERVER['HTTP_HOST'] ?? '',
-    'secure' => $secure,
-    'httponly' => true,
-    'samesite' => 'Lax'
-];
-session_set_cookie_params($cookieParams);
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-
-// Inactivity timeout (seconds)
-$timeout_seconds = 1800; // 30 minutes
-if (!empty($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_seconds) {
-    // destroy session on timeout
-    $_SESSION = [];
-    if (ini_get('session.use_cookies')) {
-        $params = session_get_cookie_params();
-        setcookie(
-            session_name(),
-            '',
-            time() - 42000,
-            $params['path'],
-            $params['domain'],
-            $params['secure'],
-            $params['httponly']
-        );
-    }
-    session_destroy();
-    header('Location: loginform.php?timeout=1');
-    exit;
-}
-$_SESSION['last_activity'] = time();
-
 $title = $title ?? "Home Page";
 ?>
 <!DOCTYPE html>
